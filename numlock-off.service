@@ -1,0 +1,15 @@
+[Unit]
+Description=Force NumLock off — polling loop
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'while true; do /usr/bin/setleds -D -num < /dev/tty1 2>/dev/null; sleep 30; done'
+ExecStop=/usr/bin/pkill -f "setleds.*-num"
+Restart=always
+RestartSec=10
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Install]
+WantedBy=default.target

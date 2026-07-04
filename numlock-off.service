@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c 'while true; do DISPLAY=:0 /usr/bin/numlockx off; sleep 30; done'
+ExecStart=/bin/bash -c 'while true; do DISPLAY=:0 /usr/bin/numlockx off; sleep 15; done'
 ExecStop=/usr/bin/pkill -f "numlockx"
 Restart=always
 RestartSec=10
